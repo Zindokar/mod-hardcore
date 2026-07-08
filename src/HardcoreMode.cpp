@@ -77,7 +77,7 @@ public:
         }
     }
 
-    void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool /*applySickness*/) override
+    void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool& /*applySickness*/) override
     { // We keep this function just to prevent some exploits for reviving
         if (getHardcoreEnabledForPlayer(player))
         {
@@ -190,7 +190,7 @@ public:
     {
     }
 
-    bool CanPacketReceive(WorldSession* session, WorldPacket& packet) override
+    bool CanPacketReceive(WorldSession* session, const WorldPacket& packet) override
     {
         if (!sConfigMgr->GetOption<bool>("ModHardcore.Enable", false))
         {
